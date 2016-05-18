@@ -1,0 +1,106 @@
+% ==========================
+% Manipulando dados 1
+% ==========================
+
+% vetor em linha de 1000 números aleatórios (distribuição uniforme)
+v = rand(1, 1000)
+
+% distribuição de Gauss ("lombada")
+v = randn(1, 1000)
+
+A = magic(3)
+
+% alterar o prompt
+PS1('>> ')
+
+% diretório atual
+pwd
+
+% mudar diretório
+cd 'caminho'
+
+% listar arquivos
+ls
+
+% gerar um histograma
+hist(X)
+hist(X, 50) % distribuir em "50 colunas"
+
+% tamanhos de uma matriz
+size(A)
+
+% linhas (primeira dimensão)
+size(A, 1)
+
+% colunas (segunda dimensão)
+size(A, 2)
+
+% tamanho da maior dimensão (normalmente usado só para vetores)
+length(A)
+
+% ==========================
+% Lendo e carregando arquivos
+% ==========================
+
+
+% carrega o conteúdo do arquivo e cria variável com o nome 'dados'
+load('dados.dat')
+
+% exibe lista das variáveis definidas
+who  % simples
+whos % detalhada
+
+% remove uma variável da memória
+clear nome_variavel
+
+% salva os dados de uma matriz em um arquivo binário
+save dados.mat A
+
+% salva os dados de uma matriz em um arquivo texto
+save dados.mat A -ascii
+
+% ==========================
+% Manipulando dados 2
+% ==========================
+
+A(linha, coluna)  % obtem um elemento específico
+A(linha, :)       % obtem uma linha inteira
+A(:, coluna)      % obtem uma coluna inteira
+
+A([linhas], :)    % obtem uma linha inteira
+A(:, [colunas])   % obtem uma coluna inteira
+
+A(:)              % pega os elementos de uma matriz bidimensional e transforma em um vetor de coluna
+
+value = max(v) % encontra o maior elemento do vetor v
+[value, index] = max(v) % encontra o maior elemento do vetor v e sua posição
+% Se max for usado em uma matriz, trará o máximo de cada coluna.
+max(A, [], 1) % máximo por coluna
+max(A, [], 2) % máximo por linha
+max(A(:)) == max(max(A))
+
+find(A < 3) % retorna os elementos de A que são menores que 3
+
+Funções úteis:
+floor
+ceil
+round
+abs
+sum
+prod
+max
+min
+flipud - inverte matriz verticalmente
+fliplr - inverte matriz horizontalmente
+pinv   - matriz invertida (pseudo-inversão)
+
+Plotagem:
+plot(x, y)
+surf(x1, x2, Y)
+contour(x1, x2, Y)
+imagesc(A) 
+
+Coloração de imagesc:
+colormap('list');
+colormap('gray');
+colormap('default');
